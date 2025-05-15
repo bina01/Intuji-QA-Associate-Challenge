@@ -1,0 +1,20 @@
+{
+  "newUser": {
+    "name": "",
+    "email": "",
+    "password": "Password123!",
+    "firstName": "First",
+    "lastName": "user",
+    "company": "TestCompany",
+    "address": "123 Test Street",
+    "address2": "Suite 100",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Bangalore",
+    "zipcode": "560001",
+    "mobileNumber": "9876543210",
+    "day": "1",
+    "month": "January",
+    "year": "1990"
+  }
+}
