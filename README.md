@@ -1,5 +1,6 @@
 # Setup steps:
- - git clone https://github.com/bina01/Intuji-QA-Associate-Challenge.git 
+ - git clone https://github.com/bina01/Intuji-QA-Associate-Challenge.git
+ - cd Intuji-QA-Associate-Challenge (project name)
  - npm install 
 
 # Run tests
