@@ -41,6 +41,9 @@ describe("Complete User Registration Flow", () => {
 
     // Submit registration
     registerPage.clickCreateAccount();
+
+ 
+
   });
 
   it("Handle duplicate email error", () => {
@@ -53,10 +56,15 @@ describe("Complete User Registration Flow", () => {
 
     registerPage.verifyEmailUniquenessError();
   });
+
+  
   it("After Registration, verify the user is logged in", () => {
+    
     cy.visit("/login");
     cy.get('input[data-qa="login-email"]').type(testUser.email);
     cy.get('input[data-qa="login-password"]').type(testUser.password);
     cy.get('button[data-qa="login-button"]').click();
+    cy.get('a[href="/logout"]').should('be.visible');
   });
+
 });
