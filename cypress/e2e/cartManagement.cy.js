@@ -11,6 +11,12 @@ describe('Cart and Quantity Management with Repeated Add-to-Cart', () => {
     });
   });
 
+  beforeEach(() => {
+  cy.fixture('login').then((user) => {
+    cy.loginWithSession(user.email, user.password);
+  });
+});
+
   it('adds products with correct quantity and verifies cart', () => {
     // Add Product A three times
     for (let i = 0; i < productA.quantity; i++) {
