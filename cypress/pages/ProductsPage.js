@@ -1,39 +1,46 @@
-class ProductsPage {
-  visit() {
-    cy.visit('/products');
+class CartPage {
+  visitHome() {
+    cy.visit('https://automationexercise.com');
   }
 
-  filterByCategory(mainCategory, subCategory) {
-    // Click main category (e.g., Women)
-    cy.contains('a', mainCategory).click();
-
-    // Wait for subcategory to show and click subcategory (e.g., Dress)
-    cy.contains('a', subCategory).click();
+  addProductByName(productName) {
+    cy.contains(productName).scrollIntoView().trigger('mouseover');
+    cy.contains(productName).parent().contains('Add to cart').click();
   }
 
-//   getProductList() {
-//     return cy.get('.features_items .product-image-wrapper');
-//   }
-
-  getProductNames() {
-    return cy.get('.features_items .product-image-wrapper .productinfo p');
+  continueShopping() {
+    cy.contains('Continue Shopping').click();
   }
 
-  clickProductByName(productName) {
-    cy.get('.features_items .product-image-wrapper').contains(productName).click();
+  goToCart() {
+    cy.contains('View Cart').click();
   }
 
-  getProductDetailName() {
-    return cy.get('.product-information h2');
+  changeQuantity(productName, quantity) {
+    cy.get('tr')
+      .contains(productName)
+      .parent()
+      .find('input[type="number"]')
+      .clear()
+      .type(quantity);
+    cy.wait(1000); // wait for update if needed
   }
 
-  getProductDetailPrice() {
-    return cy.get('.product-information span span');
+  removeProduct(productName) {
+    cy.get('tr')
+      .contains(productName)
+      .parent()
+      .find('.cart_delete a')
+      .click();
   }
 
-  getProductDetailAvailability() {
-    return cy.get('.product-information p:contains("Availability")');
+  verifyTotal(expectedTotal) {
+    cy.get('.cart_total_price').then(($els) => {
+      const prices = [...$els].map(el => parseFloat(el.innerText.replace(/[^\d.]/g, '')));
+      const total = prices.reduce((acc, val) => acc + val, 0);
+      expect(total).to.eq(expectedTotal);
+    });
   }
 }
 
-export default ProductsPage;
+export const cartPage = new CartPage();
