@@ -1,0 +1,16 @@
+{
+  "productA": 
+    {
+      "name": "Blue Top",
+      "url": "/product_details/1",
+      "price": 500,
+      "quantity": 3
+    },
+    "productB":{
+      "name": "Men Tshirt",
+      "url": "/product_details/2",
+      "price": 400,
+      "quantity": 1
+    }
+  
+}
