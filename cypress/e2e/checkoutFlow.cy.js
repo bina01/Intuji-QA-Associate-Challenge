@@ -28,8 +28,8 @@ describe("Checkout Flow with Stored Login Session", () => {
       if ($body.find("a.btn.btn-default.check_out").length > 0) {
         cy.contains("Proceed To Checkout").click();
         cy.contains("Place Order").click();
-        
-        checkoutPage.fillPaymentDetails(payment)
+
+        checkoutPage.fillPaymentDetails(payment);
 
         // Confirm success
         cy.contains("Order Placed!").should("be.visible");
